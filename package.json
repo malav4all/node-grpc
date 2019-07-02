@@ -8,8 +8,8 @@
     "npm": "6.9.0"
   },
   "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index.js"
+    "dev": "nodemon server.js",
+    "start-server": "node server.js"
   },
   "author": "Akin",
   "license": "ISC",
