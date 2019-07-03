@@ -28,6 +28,31 @@ const listTodos = (req, res) => {
     });
 };
 
+
+const getSingleTodo = (req, res) => {
+    const { id } = req.params;
+    client.getSingleTodo({ id }, (error, result) => {
+        if (!error) {
+            res.status(200).json(result);
+        } else {
+            res.status(400).json(error);
+        }
+    });
+};
+
+
+const deleteTodo = (req, res) => {
+    const { id } = req.params;
+    client.deleteTodo({ id }, (error, result) => {
+        if (!error) {
+            res.status(200).json(result);
+        } else {
+            res.status(400).json(error);
+        }
+    });
+};
+
+
 const createTodo = (req, res) => {
     const { body } = req;
     let id = Math.floor(Math.random() * 1000000) + 1;
@@ -49,6 +74,8 @@ const createTodo = (req, res) => {
 
 module.exports = {
     listTodos,
-    createTodo
+    createTodo,
+    getSingleTodo,
+    deleteTodo
 };
 
