@@ -129,6 +129,23 @@ The above will get you a copy of the project up and running on your local machin
 ```
 
 
+###  Get Single Todo
+
+> GET {{ base_uri }}/api/todos/:id
+
+### Response
+
+```json
+
+{
+    "id": "609871",
+    "title": "Test Todo",
+    "completed": false
+}
+
+```
+
+
 ###  Create new todo
 
 > POST {{ base_uri }}/api/todos
@@ -146,6 +163,23 @@ The above will get you a copy of the project up and running on your local machin
     "id": "215782",
     "title": "Test Todo",
     "completed": false
+}
+
+```
+
+
+
+###  Delete Todo
+
+> DELETE {{ base_uri }}/api/todos/:id
+
+
+### Response
+
+```json
+
+{
+    "status": "true"
 }
 
 ```
