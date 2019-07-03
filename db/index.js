@@ -32,8 +32,19 @@ const getTodo = (key = '') => new Promise((async(resolve, reject) => {
 }));
 
 
+const deleteTodo = (key = '') => new Promise((async(resolve, reject) => {
+    try {
+        const data = await Todo.findOneAndDelete({ id: key }).exec();
+        resolve(data);
+    } catch (e) {
+        reject(e);
+    }
+}));
+
+
 module.exports = {
     saveTodo,
     getAllTodos,
-    getTodo
+    getTodo,
+    deleteTodo
 };

@@ -17,7 +17,9 @@ const Controller = require('./controllers');
 const server = new grpc.Server();
 server.addService(todoPackageDefinition.TodoService.service, {
     getTodos: Controller.Todo.getTodos,
-    createTodo: Controller.Todo.createTodo
+    createTodo: Controller.Todo.createTodo,
+    getSingleTodo: Controller.Todo.getSingleTodo,
+    deleteTodo: Controller.Todo.deleteTodo
 });
 
 server.bind('127.0.0.1:50051', grpc.ServerCredentials.createInsecure());
