@@ -4,7 +4,7 @@ syntax = "proto3";
 
 service TodoService {
     rpc getTodos (Empty) returns (TodoList) {}
-    rpc insertTodo (Todo) returns (Todo) {}
+    rpc createTodo (Todo) returns (Todo) {}
 }
 
 

@@ -15,8 +15,8 @@ const Services = require('./services');
 
 const server = new grpc.Server();
 server.addService(todoProto.TodoService.service, {
-    getTodos: Services.getTodos,
-    createTodo: Services.createTodo
+    getTodos: Services.Todo.getTodos,
+    createTodo: Services.Todo.createTodo
 });
 
 server.bind('127.0.0.1:50051', grpc.ServerCredentials.createInsecure());

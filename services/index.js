@@ -1,8 +1,6 @@
-const getTodos = require('./get.todos');
-const createTodo = require('./create.todo');
+const Todo = require('./todo');
 
 module.exports = {
-  getTodos,
-  createTodo,
+    Todo
 };
 
