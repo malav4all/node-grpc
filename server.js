@@ -1,7 +1,13 @@
 const grpc = require('grpc');
 const protoLoader = require('@grpc/proto-loader');
 
-const packageDefinition = protoLoader.loadSync('./todo.proto');
+const packageDefinition = protoLoader.loadSync('./todo.proto', {
+    keepCase: true,
+    longs: String,
+    enums: String,
+    defaults: true,
+    oneofs: true
+});
 const todoProto = grpc.loadPackageDefinition(packageDefinition);
 
 const Services = require('./services');
@@ -9,8 +15,8 @@ const Services = require('./services');
 
 const server = new grpc.Server();
 server.addService(todoProto.TodoService.service, {
-  list: Services.getTodos,
-  insert: Services.createTodo,
+    getTodos: Services.getTodos,
+    createTodo: Services.createTodo
 });
 
 server.bind('127.0.0.1:50051', grpc.ServerCredentials.createInsecure());

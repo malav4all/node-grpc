@@ -1,9 +1,10 @@
 syntax = "proto3";
 
 
+
 service TodoService {
-    rpc List (Empty) returns (TodoList) {}
-    rpc Insert (Todo) returns (Todo) {}
+    rpc getTodos (Empty) returns (TodoList) {}
+    rpc insertTodo (Todo) returns (Todo) {}
 }
 
 
