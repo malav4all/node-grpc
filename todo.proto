@@ -1,5 +1,6 @@
 syntax = "proto3";
 
+package todo;
 
 
 service TodoService {
@@ -11,13 +12,13 @@ service TodoService {
 message Empty {}
 
 
+message TodoList {
+  repeated Todo todos = 1;
+}
+
+
 message Todo {
    string id = 1;
    string title = 2;
    bool completed = 3;
-}
-
-
-message TodoList {
-   repeated Todo todos = 1;
 }

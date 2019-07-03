@@ -8,13 +8,13 @@ const packageDefinition = protoLoader.loadSync('./todo.proto', {
     defaults: true,
     oneofs: true
 });
-const todoProto = grpc.loadPackageDefinition(packageDefinition);
+const todoPackageDefination = grpc.loadPackageDefinition(packageDefinition).todo;
 
 const Services = require('./services');
 
 
 const server = new grpc.Server();
-server.addService(todoProto.TodoService.service, {
+server.addService(todoPackageDefination.TodoService.service, {
     getTodos: Services.Todo.getTodos,
     createTodo: Services.Todo.createTodo
 });
