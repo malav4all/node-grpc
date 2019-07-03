@@ -1,12 +1,11 @@
-const redisClient = require('../lib/redis');
-const config = require('../config');
+const Todo = require('../models/todo');
 
-const arg = config.todo_cache_name;
 
-const saveTodo = (key, data) => new Promise((async(resolve, reject) => {
+const saveTodo = (data) => new Promise((async(resolve, reject) => {
     try {
-        await redisClient.hsetAsync(arg, key, JSON.stringify(data));
-        resolve(true);
+        const todo = new Todo(data);
+        const newTodo = await todo.save();
+        resolve(newTodo);
     } catch (e) {
         reject(e);
     }
@@ -15,8 +14,7 @@ const saveTodo = (key, data) => new Promise((async(resolve, reject) => {
 
 const getAllTodos = () => new Promise((async(resolve, reject) => {
     try {
-        const result = await redisClient.hgetallAsync(arg);
-        const data = result;
+        const data = Todo.find().sort({ id: 'asc' }).exec();
         resolve(data);
     } catch (e) {
         reject(e);
@@ -26,19 +24,8 @@ const getAllTodos = () => new Promise((async(resolve, reject) => {
 
 const getTodo = (key = '') => new Promise((async(resolve, reject) => {
     try {
-        const result = await redisClient.hgetAsync(arg, key);
-        const data = result;
+        const data = await Todo.findOne({ id: key }).exec();
         resolve(data);
-    } catch (e) {
-        reject(e);
-    }
-}));
-
-
-const removeTodo = (key = '') => new Promise((async(resolve, reject) => {
-    try {
-        await redisClient.hdelAsync(arg, key);
-        resolve(true);
     } catch (e) {
         reject(e);
     }
@@ -48,6 +35,5 @@ const removeTodo = (key = '') => new Promise((async(resolve, reject) => {
 module.exports = {
     saveTodo,
     getAllTodos,
-    getTodo,
-    removeTodo
+    getTodo
 };

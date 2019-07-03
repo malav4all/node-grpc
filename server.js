@@ -1,5 +1,6 @@
 const grpc = require('grpc');
 const protoLoader = require('@grpc/proto-loader');
+const mongo = require('./lib/mongo');
 
 const packageDefinition = protoLoader.loadSync('./todo.proto', {
     keepCase: true,

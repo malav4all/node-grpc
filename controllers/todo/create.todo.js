@@ -3,8 +3,7 @@ const db = require('../../db');
 
 function createTodo(call, callback) {
     const todo = call.request;
-    const { id } = todo;
-    db.saveTodo(id, todo)
+    db.saveTodo(todo)
         .then(() => {
             callback(null, todo);
         })

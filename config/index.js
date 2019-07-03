@@ -1,6 +1,5 @@
 const config = {
-    // REDIS_URI: '',
-    todo_cache_name: 'todo_cache'
+    DATABASE_URI: process.env.DATABASE_URI
 };
 
 module.exports = config;

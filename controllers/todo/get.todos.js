@@ -7,11 +7,7 @@ function getTodos(call, callback) {
             if (!result) {
                 callback(null, { todos: [] });
             }
-            const items = [];
-            for (i in result) {
-                items.push(JSON.parse(result[i]));
-            }
-            callback(null, { todos: items });
+            callback(null, { todos: result });
         })
         .catch((e) => {
             callback(e);
