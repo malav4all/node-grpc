@@ -19,7 +19,8 @@ server.addService(todoPackageDefinition.TodoService.service, {
     getTodos: Controller.Todo.getTodos,
     createTodo: Controller.Todo.createTodo,
     getSingleTodo: Controller.Todo.getSingleTodo,
-    deleteTodo: Controller.Todo.deleteTodo
+    deleteTodo: Controller.Todo.deleteTodo,
+    updateTodo: Controller.Todo.updateTodo
 });
 
 server.bind('127.0.0.1:50051', grpc.ServerCredentials.createInsecure());

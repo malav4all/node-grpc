@@ -8,6 +8,7 @@ service TodoService {
     rpc createTodo (Todo) returns (Todo) {}
     rpc getSingleTodo (todoId) returns (Todo) {}
     rpc deleteTodo (todoId) returns (result) {}
+    rpc updateTodo (todoId) returns (result) {}
 }
 
 
