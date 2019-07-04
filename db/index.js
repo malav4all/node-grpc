@@ -42,9 +42,20 @@ const deleteTodo = (key = '') => new Promise((async(resolve, reject) => {
 }));
 
 
+const updateTodo = (key = '', arg) => new Promise((async(resolve, reject) => {
+    try {
+        const data = await Todo.findOneAndUpdate({ id: key }, arg, { new: true }).exec();
+        resolve(data);
+    } catch (e) {
+        reject(e);
+    }
+}));
+
+
 module.exports = {
     saveTodo,
     getAllTodos,
     getTodo,
-    deleteTodo
+    deleteTodo,
+    updateTodo
 };
