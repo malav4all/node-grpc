@@ -53,6 +53,24 @@ const deleteTodo = (req, res) => {
 };
 
 
+const updateTodo = (req, res) => {
+    const { id } = req.params;
+    const { title, completed } = req.body;
+    const todo = {
+        id,
+        title,
+        completed
+    };
+    client.updateTodo(todo, (error, result) => {
+        if (!error) {
+            res.status(200).json(result);
+        } else {
+            res.status(400).json(error);
+        }
+    });
+};
+
+
 const createTodo = (req, res) => {
     const { body } = req;
     let id = Math.floor(Math.random() * 1000000) + 1;
@@ -76,6 +94,7 @@ module.exports = {
     listTodos,
     createTodo,
     getSingleTodo,
-    deleteTodo
+    deleteTodo,
+    updateTodo
 };
 
